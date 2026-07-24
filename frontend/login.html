@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login | AI Interview Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-bg">
+
+<div class="auth-card fade-in" id="loginCard">
+    <h1>AI Interview Platform</h1>
+    <p class="muted">Sign in to continue</p>
+
+    <input type="text" id="email" placeholder="Email address">
+    <span class="error" id="emailError"></span>
+
+    <div class="password-wrapper">
+        <input 
+            type="password" 
+            id="password" 
+            placeholder="Password"
+            oninput="checkPasswordStrength()"
+        >
+        <span class="toggle-password" onclick="togglePassword()">👁</span>
+    </div>
+
+    <div class="strength">
+        <span id="strengthText"></span>
+        <div class="strength-bar">
+            <div id="strengthFill"></div>
+        </div>
+    </div>
+
+    <span class="error" id="passwordError"></span>
+
+    <button onclick="validateLogin()">Login</button>
+
+    <button class="link-btn" onclick="location.href='register.html'">
+    Don't have an account? Register
+</button>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

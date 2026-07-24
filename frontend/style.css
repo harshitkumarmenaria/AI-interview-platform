@@ -1,0 +1,303 @@
+/* =========================
+   THEME VARIABLES
+========================= */
+:root {
+    --primary: #6366f1;
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --text: #111;
+}
+
+.dark {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #f8fafc;
+}
+
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+    box-sizing: border-box;
+    font-family: Inter, system-ui, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* Smooth transitions only where needed */
+button, input, .auth-card, .dash-card {
+    transition: 0.3s ease;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+.fade-in {
+    animation: fade 0.6s ease;
+}
+
+@keyframes fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; }
+}
+
+/* Shake animation (login error) */
+.shake {
+    animation: shake 0.35s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* =========================
+   LOGIN / AUTH
+========================= */
+.auth-bg {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-card {
+    background: var(--card);
+    padding: 40px;
+    width: 360px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.auth-card h1 {
+    margin-bottom: 10px;
+}
+
+.auth-card .muted {
+    margin-bottom: 20px;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #cbd5f5;
+}
+
+.auth-card input:focus {
+    outline: none;
+    border: 2px solid var(--primary);
+}
+
+/* Error text */
+.error {
+    color: #ef4444;
+    font-size: 13px;
+    text-align: left;
+    margin-top: 4px;
+    display: block;
+}
+
+/* =========================
+   PASSWORD VISIBILITY
+========================= */
+.password-wrapper {
+    position: relative;
+    margin-top: 10px;
+}
+
+.password-wrapper input {
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+    opacity: 0.7;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
+/* =========================
+   PASSWORD STRENGTH
+========================= */
+.strength {
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+#strengthText {
+    font-size: 13px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.strength-bar {
+    width: 100%;
+    height: 6px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#strengthFill {
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+button {
+    background: var(--primary);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: #4f46e5;
+}
+
+.link-btn {
+    background: none;
+    color: var(--primary);
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* =========================
+   NAV BAR
+========================= */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+.dashboard {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 80px;
+}
+
+.dash-card {
+    background: var(--card);
+    padding: 30px;
+    width: 260px;
+    border-radius: 18px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    text-align: center;
+}
+
+.dash-card:hover {
+    transform: translateY(-8px);
+}
+
+/* =========================
+   CONTENT / GLASS CARDS
+========================= */
+.glass-card {
+    background: var(--card);
+    width: 520px;
+    margin: 80px auto;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+textarea,
+input[type="file"] {
+    width: 100%;
+    margin: 15px 0;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5f5;
+}
+
+/* =========================
+   SPINNER
+========================= */
+.spinner {
+    width: 40px;
+    height: 40px;
+    margin: 15px auto;
+    border: 4px solid #ccc;
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* =========================
+   RESULT TEXT
+========================= */
+.result {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.muted {
+    opacity: 0.7;
+}
+.auth-card {
+    display: flex;
+    flex-direction: column;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+}
+
+.dashboard-container {
+    max-width: 600px;
+    margin: 50px auto;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.verdict {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}

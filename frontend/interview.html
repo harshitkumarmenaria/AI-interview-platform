@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Interview</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="glass-card fade-in">
+    <h2>AI Interview</h2>
+
+    <p class="question">
+        Explain your experience with Python backend development.
+    </p>
+
+    <textarea id="answer" placeholder="Type your answer here..."></textarea>
+
+    <button onclick="submitAnswer()">Submit Answer</button>
+
+    <div id="spinner" class="spinner hidden"></div>
+
+    <p id="score" class="result"></p>
+
+    <button class="link-btn" onclick="goBack()">← Back to Dashboard</button>
+</div>
+
+<script src="script.js"></script>
+<script>
+function goBack() {
+    const params = new URLSearchParams(window.location.search);
+    const userId = params.get("user_id");
+    window.location.href = `dashboard.html?user_id=${userId}`;
+}
+</script>
+
+</body>
+</html>

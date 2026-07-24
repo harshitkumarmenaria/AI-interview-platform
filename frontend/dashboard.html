@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Dashboard | AI Interview Platform</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="dashboard-container">
+    <h1>Candidate Dashboard</h1>
+
+    <div class="card">
+        <p><strong>Name:</strong> <span id="name">Loading...</span></p>
+        <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+    </div>
+
+    <div class="card">
+        <p>📄 Resume Score: <span id="resume_score">-</span></p>
+        <p>🗣 Interview Score: <span id="interview_score">-</span></p>
+        <p>🎯 Final Score: <span id="final_score">-</span></p>
+    </div>
+
+    <div class="card verdict">
+        <h2 id="verdict">Loading...</h2>
+    </div>
+
+    <button onclick="goToUpload()">Upload Resume</button>
+    <button onclick="goToInterview()">Take Interview</button>
+</div>
+
+<script>
+function getUserId() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("user_id");
+}
+
+function goToUpload() {
+    const userId = getUserId();
+    window.location.href = `upload.html?user_id=${userId}`;
+}
+
+function goToInterview() {
+    const userId = getUserId();
+    window.location.href = `interview.html?user_id=${userId}`;
+}
+
+async function loadDashboard() {
+    const userId = getUserId();
+
+    if (!userId) {
+        alert("Missing user ID");
+        return;
+    }
+
+    try {
+        const res = await fetch(`http://127.0.0.1:8000/dashboard/${userId}`);
+
+        if (!res.ok) {
+            throw new Error("Server error");
+        }
+
+        const data = await res.json();
+
+        document.getElementById("name").innerText = data.name || "-";
+        document.getElementById("email").innerText = data.email || "-";
+        document.getElementById("resume_score").innerText = data.resume_score ?? "-";
+        document.getElementById("interview_score").innerText = data.interview_score ?? "-";
+        document.getElementById("final_score").innerText = data.final_score ?? "-";
+        document.getElementById("verdict").innerText = data.verdict || "-";
+
+    } catch (err) {
+        console.error(err);
+        alert("Failed to load dashboard");
+    }
+}
+
+loadDashboard();
+</script>
+
+</body>
+</html>
